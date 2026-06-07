@@ -10,14 +10,14 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Arial',sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#ffd6e5,#ffc4d6);
+background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
 overflow-x:hidden;
-color:white;
 text-align:center;
+color:white;
 }
 
 #intro{
@@ -26,12 +26,12 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(180deg,#ffd6e5,#ffc4d6);
+background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:9999;
+z-index:99999;
 cursor:pointer;
 transition:1s;
 }
@@ -47,19 +47,19 @@ animation:bounce 1.5s infinite;
 
 .main{
 display:none;
-padding:30px 20px;
+padding:25px;
 }
 
 .photo{
 width:90%;
-max-width:360px;
+max-width:380px;
 border-radius:25px;
 border:6px solid white;
-box-shadow:0 0 25px rgba(255,255,255,.6);
-animation:fadeIn 2s ease;
+box-shadow:0 0 30px rgba(255,255,255,.7);
+animation:photoIn 2s ease;
 }
 
-@keyframes fadeIn{
+@keyframes photoIn{
 from{
 opacity:0;
 transform:scale(.7);
@@ -73,15 +73,15 @@ transform:scale(1);
 h1{
 font-size:55px;
 margin-top:20px;
-text-shadow:0 0 15px white;
+text-shadow:0 0 20px white;
 }
 
 .message{
-max-width:700px;
-margin:auto;
-padding:20px;
 font-size:22px;
 line-height:1.8;
+max-width:800px;
+margin:auto;
+padding:25px;
 }
 
 .card{
@@ -89,7 +89,7 @@ background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
 border-radius:25px;
 padding:25px;
-margin:30px auto;
+margin:25px auto;
 max-width:500px;
 }
 
@@ -101,37 +101,52 @@ color:#ff4d88;
 text-decoration:none;
 border-radius:999px;
 font-weight:bold;
-margin-top:15px;
-}
-
-.flower,
-.heart,
-.sparkle{
-position:fixed;
-pointer-events:none;
-z-index:2;
+margin-top:20px;
 }
 
 .flower{
-font-size:28px;
-animation:fall 10s linear forwards;
+position:fixed;
+top:-100px;
+pointer-events:none;
+z-index:2;
+animation:flowerFall linear forwards;
 }
 
-@keyframes fall{
-from{
-transform:translateY(-100px);
+@keyframes flowerFall{
+0%{
+transform:translateY(-100px) rotate(0deg);
+opacity:0;
 }
-to{
-transform:translateY(120vh);
+10%{
+opacity:1;
 }
+100%{
+transform:translateY(120vh) rotate(720deg);
+opacity:.9;
+}
+}
+
+.sparkle{
+position:fixed;
+pointer-events:none;
+font-size:20px;
+animation:sparkle 3s linear forwards;
+}
+
+@keyframes sparkle{
+0%{opacity:0;}
+50%{opacity:1;}
+100%{opacity:0;}
 }
 
 .heart{
-font-size:24px;
-animation:floatUp 10s linear forwards;
+position:fixed;
+font-size:28px;
+pointer-events:none;
+animation:heartFloat 10s linear forwards;
 }
 
-@keyframes floatUp{
+@keyframes heartFloat{
 from{
 transform:translateY(100vh);
 }
@@ -140,32 +155,21 @@ transform:translateY(-120vh);
 }
 }
 
-.sparkle{
-font-size:18px;
-animation:twinkle 3s linear forwards;
-}
-
-@keyframes twinkle{
-0%{opacity:0;}
-50%{opacity:1;}
-100%{opacity:0;}
-}
-
-#flowerHeart{
-position:relative;
-height:400px;
-margin-top:30px;
-}
-
-.heartFlower{
-position:absolute;
-font-size:24px;
-transition:4s ease;
-}
-
 footer{
 padding:40px;
-font-size:20px;
+font-size:22px;
+}
+
+#heartContainer{
+position:relative;
+height:450px;
+margin-top:20px;
+}
+
+.flowerHeart{
+position:absolute;
+width:40px;
+transition:4s ease;
 }
 </style>
 </head>
@@ -175,23 +179,23 @@ font-size:20px;
 <div id="intro">
 <div class="envelope">💌</div>
 <h2>For My Mayaluu ❤️</h2>
-<p>Tap anywhere to open</p>
+<p>Tap Anywhere To Open</p>
 </div>
 
 <div class="main" id="main">
 
-<div id="flowerHeart"></div>
+<div id="heartContainer"></div>
 
 <img src="IMG-20260505-WA0012.jpg" class="photo">
 
 <h1>For My Mayaluu ❤️</h1>
 
 <div class="message">
-Babe, I loveee you soooooo muchhhhhhh 💖<br><br>
+Babe I loveee you soooooo muchhhhhhh 💖<br><br>
+
 Every moment with you feels special.
-Your smile brightens my day,
-your presence makes everything better.
-You are my favorite person and my happiest place. 🌸💕
+You make my days brighter and my heart happier.
+Thank you for being my favorite person. 🌸💕
 </div>
 
 <a class="btn"
@@ -203,19 +207,18 @@ target="_blank">
 <div class="card">
 <h2>💞 Anniversary Date 💞</h2>
 <h3>19 March 2026</h3>
-<p id="daysTogether"></p>
 </div>
 
 <div class="card">
 <h2>💌 Love Letter</h2>
 <p>
 Forever yours,<br>
-Lil Guy 💕
+Lil Guy ❤️
 </p>
 </div>
 
 <footer>
-🌹🌸✨ I Love You So Much Mayaluu ✨🌸🌹
+🌹✨ I LOVE YOU MAYALUU ✨🌹
 </footer>
 
 </div>
@@ -231,119 +234,133 @@ intro.style.opacity="0";
 setTimeout(()=>{
 intro.remove();
 main.style.display="block";
-createFlowerHeart();
+createHeart();
 },1000);
 };
 
-function createFlowerHeart(){
+const flowerImages=[
+"pngwing.com.png",
+"pngwing.com-1.png",
+"pngwing.com-2.png"
+];
 
-const container=document.getElementById("flowerHeart");
+function createFlower(){
 
-const total=220;
+let img=document.createElement("img");
 
-for(let i=0;i<total;i++){
+img.src=flowerImages[
+Math.floor(Math.random()*flowerImages.length)
+];
 
-let flower=document.createElement("div");
+img.className="flower";
 
-flower.className="heartFlower";
+img.style.left=Math.random()*100+"vw";
 
-flower.innerHTML=["🌸","🌹","💮"][Math.floor(Math.random()*3)];
+img.style.width=(40+Math.random()*40)+"px";
 
-flower.style.left=Math.random()*window.innerWidth+"px";
-flower.style.top=Math.random()*400+"px";
+img.style.animationDuration=
+(8+Math.random()*5)+"s";
+
+document.body.appendChild(img);
+
+setTimeout(()=>{
+img.remove();
+},13000);
+
+}
+
+setInterval(createFlower,250);
+
+function createSparkle(){
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},3000);
+
+}
+
+setInterval(createSparkle,350);
+
+function createHeartFloat(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},10000);
+
+}
+
+setInterval(createHeartFloat,700);
+
+function createHeart(){
+
+const container=
+document.getElementById("heartContainer");
+
+for(let i=0;i<180;i++){
+
+let flower=document.createElement("img");
+
+flower.src=
+flowerImages[
+Math.floor(Math.random()*flowerImages.length)
+];
+
+flower.className="flowerHeart";
+
+flower.style.left=
+Math.random()*window.innerWidth+"px";
+
+flower.style.top=
+Math.random()*400+"px";
 
 container.appendChild(flower);
 
-let t=(Math.PI*2*i)/total;
+let t=(Math.PI*2*i)/180;
 
-let x=16*Math.pow(Math.sin(t),3);
+let x=
+16*Math.pow(Math.sin(t),3);
 
-let y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+let y=
+-(13*Math.cos(t)
+-5*Math.cos(2*t)
+-2*Math.cos(3*t)
+-Math.cos(4*t));
 
 setTimeout(()=>{
-flower.style.left=(window.innerWidth/2-20+x*12)+"px";
-flower.style.top=(180+y*12)+"px";
+
+flower.style.left=
+(window.innerWidth/2
++x*12)+"px";
+
+flower.style.top=
+(220+y*12)+"px";
+
 },100);
 
 }
 
 }
-
-setInterval(()=>{
-
-let flower=document.createElement("div");
-
-flower.className="flower";
-
-flower.innerHTML=["🌸","🌹","💮"][Math.floor(Math.random()*3)];
-
-flower.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(flower);
-
-setTimeout(()=>{
-flower.remove();
-},10000);
-
-},250);
-
-setInterval(()=>{
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="💖";
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},10000);
-
-},700);
-
-setInterval(()=>{
-
-let sparkle=document.createElement("div");
-
-sparkle.className="sparkle";
-
-sparkle.innerHTML="✨";
-
-sparkle.style.left=Math.random()*100+"vw";
-sparkle.style.top=Math.random()*100+"vh";
-
-document.body.appendChild(sparkle);
-
-setTimeout(()=>{
-sparkle.remove();
-},3000);
-
-},400);
-
-const startDate=new Date("2026-03-19");
-
-function updateDays(){
-
-const now=new Date();
-
-const diff=now-startDate;
-
-const days=Math.max(
-0,
-Math.floor(diff/(1000*60*60*24))
-);
-
-document.getElementById("daysTogether").innerHTML=
-"❤️ "+days+" Days Together ❤️";
-
-}
-
-updateDays();
-
 </script>
 
 </body>
