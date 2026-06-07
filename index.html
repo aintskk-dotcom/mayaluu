@@ -10,33 +10,34 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Arial',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ffd6e0,#ffc2d1);
-text-align:center;
-color:white;
+background:linear-gradient(180deg,#ffd6e5,#ffc4d6);
 overflow-x:hidden;
+color:white;
+text-align:center;
 }
 
-#envelopeScreen{
+#intro{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(135deg,#ffd6e0,#ffc2d1);
+background:linear-gradient(180deg,#ffd6e5,#ffc4d6);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
 cursor:pointer;
+transition:1s;
 }
 
 .envelope{
-font-size:100px;
+font-size:120px;
 animation:bounce 1.5s infinite;
 }
 
@@ -44,154 +45,304 @@ animation:bounce 1.5s infinite;
 50%{transform:translateY(-15px);}
 }
 
-.hero{
-padding:40px 20px;
+.main{
+display:none;
+padding:30px 20px;
 }
 
 .photo{
 width:90%;
-max-width:350px;
+max-width:360px;
 border-radius:25px;
-border:5px solid white;
+border:6px solid white;
 box-shadow:0 0 25px rgba(255,255,255,.6);
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
 }
 
 h1{
-font-size:3rem;
+font-size:55px;
 margin-top:20px;
+text-shadow:0 0 15px white;
 }
 
 .message{
-font-size:1.4rem;
 max-width:700px;
-margin:20px auto;
-line-height:1.8;
-padding:0 20px;
-}
-
-.date-box{
-margin:30px auto;
+margin:auto;
 padding:20px;
-background:rgba(255,255,255,.2);
+font-size:22px;
+line-height:1.8;
+}
+
+.card{
+background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
-border-radius:20px;
-width:250px;
-}
-
-.counter{
-font-size:2rem;
-font-weight:bold;
-margin-top:10px;
-}
-
-.song{
-margin:40px auto;
-width:90%;
+border-radius:25px;
+padding:25px;
+margin:30px auto;
 max-width:500px;
 }
 
-.rose{
-position:fixed;
-font-size:30px;
-animation:float 10s linear infinite;
-pointer-events:none;
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:white;
+color:#ff4d88;
+text-decoration:none;
+border-radius:999px;
+font-weight:bold;
+margin-top:15px;
 }
 
-@keyframes float{
-0%{
+.flower,
+.heart,
+.sparkle{
+position:fixed;
+pointer-events:none;
+z-index:2;
+}
+
+.flower{
+font-size:28px;
+animation:fall 10s linear forwards;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-100px);
+}
+to{
+transform:translateY(120vh);
+}
+}
+
+.heart{
+font-size:24px;
+animation:floatUp 10s linear forwards;
+}
+
+@keyframes floatUp{
+from{
 transform:translateY(100vh);
-opacity:0;
 }
-20%{
-opacity:1;
-}
-100%{
+to{
 transform:translateY(-120vh);
-opacity:0;
 }
+}
+
+.sparkle{
+font-size:18px;
+animation:twinkle 3s linear forwards;
+}
+
+@keyframes twinkle{
+0%{opacity:0;}
+50%{opacity:1;}
+100%{opacity:0;}
+}
+
+#flowerHeart{
+position:relative;
+height:400px;
+margin-top:30px;
+}
+
+.heartFlower{
+position:absolute;
+font-size:24px;
+transition:4s ease;
+}
+
+footer{
+padding:40px;
+font-size:20px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="envelopeScreen">
+<div id="intro">
 <div class="envelope">💌</div>
 <h2>For My Mayaluu ❤️</h2>
-<p>Tap the envelope to open</p>
+<p>Tap anywhere to open</p>
 </div>
 
-<div class="hero">
+<div class="main" id="main">
+
+<div id="flowerHeart"></div>
 
 <img src="IMG-20260505-WA0012.jpg" class="photo">
 
 <h1>For My Mayaluu ❤️</h1>
 
 <div class="message">
-Babe, I loveee you sooooo muchhhhhhh 💕<br><br>
-Every moment with you feels special. You make my days brighter and my heart happier.
+Babe, I loveee you soooooo muchhhhhhh 💖<br><br>
+Every moment with you feels special.
+Your smile brightens my day,
+your presence makes everything better.
+You are my favorite person and my happiest place. 🌸💕
 </div>
 
-<div class="date-box">
-💖 Anniversary Date 💖
-<div>19 March 2026</div>
+<a class="btn"
+href="https://youtu.be/YQ-qToZUybM?si=T3C8dLmwd0GS78aQ"
+target="_blank">
+🎵 Play Our Song
+</a>
+
+<div class="card">
+<h2>💞 Anniversary Date 💞</h2>
+<h3>19 March 2026</h3>
+<p id="daysTogether"></p>
 </div>
 
-<div class="date-box">
-Days Together
-<div id="daysCounter" class="counter">0</div>
+<div class="card">
+<h2>💌 Love Letter</h2>
+<p>
+Forever yours,<br>
+Lil Guy 💕
+</p>
 </div>
 
-<div class="song">
-<iframe style="border-radius:12px"
-src="https://open.spotify.com/embed/track/3be9ACTxtcL6Zm4vJRUiPG"
-width="100%"
-height="152"
-frameBorder="0"
-allowfullscreen=""
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
-</div>
+<footer>
+🌹🌸✨ I Love You So Much Mayaluu ✨🌸🌹
+</footer>
 
 </div>
 
 <script>
 
-const startDate = new Date("2026-03-19");
-const today = new Date();
+const intro=document.getElementById("intro");
+const main=document.getElementById("main");
 
-const diff = today - startDate;
-const days = Math.max(0, Math.floor(diff/(1000*60*60*24)));
-
-document.getElementById("daysCounter").innerText = days;
-
-const envelope=document.getElementById("envelopeScreen");
-
-envelope.addEventListener("click",()=>{
-envelope.style.opacity="0";
+intro.onclick=()=>{
+intro.style.opacity="0";
 
 setTimeout(()=>{
-envelope.remove();
-},800);
-});
+intro.remove();
+main.style.display="block";
+createFlowerHeart();
+},1000);
+};
 
-function createRose(){
+function createFlowerHeart(){
 
-let rose=document.createElement("div");
+const container=document.getElementById("flowerHeart");
 
-rose.className="rose";
-rose.innerHTML="🌹";
+const total=220;
 
-rose.style.left=Math.random()*100+"vw";
+for(let i=0;i<total;i++){
 
-document.body.appendChild(rose);
+let flower=document.createElement("div");
+
+flower.className="heartFlower";
+
+flower.innerHTML=["🌸","🌹","💮"][Math.floor(Math.random()*3)];
+
+flower.style.left=Math.random()*window.innerWidth+"px";
+flower.style.top=Math.random()*400+"px";
+
+container.appendChild(flower);
+
+let t=(Math.PI*2*i)/total;
+
+let x=16*Math.pow(Math.sin(t),3);
+
+let y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
 
 setTimeout(()=>{
-rose.remove();
-},10000);
+flower.style.left=(window.innerWidth/2-20+x*12)+"px";
+flower.style.top=(180+y*12)+"px";
+},100);
+
 }
 
-setInterval(createRose,700);
+}
+
+setInterval(()=>{
+
+let flower=document.createElement("div");
+
+flower.className="flower";
+
+flower.innerHTML=["🌸","🌹","💮"][Math.floor(Math.random()*3)];
+
+flower.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+flower.remove();
+},10000);
+
+},250);
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},10000);
+
+},700);
+
+setInterval(()=>{
+
+let sparkle=document.createElement("div");
+
+sparkle.className="sparkle";
+
+sparkle.innerHTML="✨";
+
+sparkle.style.left=Math.random()*100+"vw";
+sparkle.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>{
+sparkle.remove();
+},3000);
+
+},400);
+
+const startDate=new Date("2026-03-19");
+
+function updateDays(){
+
+const now=new Date();
+
+const diff=now-startDate;
+
+const days=Math.max(
+0,
+Math.floor(diff/(1000*60*60*24))
+);
+
+document.getElementById("daysTogether").innerHTML=
+"❤️ "+days+" Days Together ❤️";
+
+}
+
+updateDays();
 
 </script>
 
