@@ -4,110 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Mayaluu ❤️</title>
+
 <style>
-body{
+*{
 margin:0;
-background:#f8d6e2;
-font-family:sans-serif;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-min-height:100vh;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
+overflow-x:hidden;
 text-align:center;
-overflow:hidden;
-}
-
-.photo{
-width:320px;
-max-width:85vw;
-border:8px solid white;
-border-radius:25px;
-box-shadow:0 0 25px rgba(255,255,255,.6);
-}
-
-h1{
 color:white;
-font-size:3rem;
-margin:20px 0 10px;
 }
 
-p{
-color:white;
-font-size:1.2rem;
-max-width:700px;
-padding:0 20px;
-}
-
-button{
-margin-top:20px;
-padding:15px 25px;
-font-size:18px;
-border:none;
-border-radius:40px;
-background:white;
-color:#ff4b7d;
-font-weight:bold;
-}
-
-.flower{
-position:fixed;
-bottom:-100px;
-pointer-events:none;
-animation:float 10s linear forwards;
-}
-
-@keyframes float{
-from{
-transform:translateY(0) rotate(0deg);
-opacity:1;
-}
-to{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
-}.music-btn{
-padding:15px 30px;
-border:none;
-border-radius:50px;
-background:white;
-color:#ff4f87;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-margin-top:20px;
-.heart-animation{
-font-size:120px;
-margin-top:15px;
-margin-bottom:10px;
-animation:heartBeat 1.5s infinite;
-filter:drop-shadow(0 0 20px hotpink);
-}
-
-@keyframes heartBeat{
-0%{
-transform:scale(1);
-}
-25%{
-transform:scale(1.2);
-}
-50%{
-transform:scale(1);
-}
-75%{
-transform:scale(1.25);
-}
-100%{
-transform:scale(1);
-}
-}
-  #envelope-screen{
+#intro{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(135deg,#ffd9e8,#ffc6d8);
+background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -123,64 +42,203 @@ animation:bounce 1.5s infinite;
 }
 
 @keyframes bounce{
-50%{
-transform:translateY(-15px);
+50%{transform:translateY(-15px);}
 }
+
+.main{
+display:none;
+padding:25px;
+}
+
+.photo{
+width:90%;
+max-width:380px;
+border-radius:25px;
+border:6px solid white;
+box-shadow:0 0 30px rgba(255,255,255,.7);
+animation:photoIn 2s ease;
+}
+
+@keyframes photoIn{
+from{
+opacity:0;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+h1{
+font-size:55px;
+margin-top:20px;
+text-shadow:0 0 20px white;
+}
+
+.message{
+font-size:22px;
+line-height:1.8;
+max-width:800px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:25px;
+margin:25px auto;
+max-width:500px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:white;
+color:#ff4d88;
+text-decoration:none;
+border-radius:999px;
+font-weight:bold;
+margin-top:20px;
+}
+
+.flower{
+position:fixed;
+top:-100px;
+pointer-events:none;
+z-index:2;
+animation:flowerFall linear forwards;
+}
+
+@keyframes flowerFall{
+0%{
+transform:translateY(-100px) rotate(0deg);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(120vh) rotate(720deg);
+opacity:.9;
+}
+}
+
+.sparkle{
+position:fixed;
+pointer-events:none;
+font-size:20px;
+animation:sparkle 3s linear forwards;
+}
+
+@keyframes sparkle{
+0%{opacity:0;}
+50%{opacity:1;}
+100%{opacity:0;}
+}
+
+.heart{
+position:fixed;
+font-size:28px;
+pointer-events:none;
+animation:heartFloat 10s linear forwards;
+}
+
+@keyframes heartFloat{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-120vh);
+}
+}
+
+footer{
+padding:40px;
+font-size:22px;
+}
+
+#heartContainer{
+position:relative;
+height:450px;
+margin-top:20px;
+}
+
+.flowerHeart{
+position:absolute;
+width:40px;
+transition:4s ease;
 }
 </style>
-
-}
 </head>
+
 <body>
-  <div id="envelope-screen">
-  <div class="envelope">💌</div>
-  <h2>Tap To Open</h2>
+
+<div id="intro">
+<div class="envelope">💌</div>
+<h2>For My Mayaluu ❤️</h2>
+<p>Tap Anywhere To Open</p>
 </div>
 
-<div id="main-content">
+<div class="main" id="main">
 
-<audio id="music" loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+<div id="heartContainer"></div>
 
 <img src="IMG-20260505-WA0012.jpg" class="photo">
 
 <h1>For My Mayaluu ❤️</h1>
-<button onclick="playSong()" class="music-btn">
-🎵 Play Our Song
-</button>
-<div class="heart-animation">
-💖✨💖
+
+<div class="message">
+Babe I loveee you soooooo muchhhhhhh 💖<br><br>
+
+Every moment with you feels special.
+You make my days brighter and my heart happier.
+Thank you for being my favorite person. 🌸💕
 </div>
+
+<a class="btn"
+href="https://youtu.be/YQ-qToZUybM?si=T3C8dLmwd0GS78aQ"
+target="_blank">
+🎵 Play Our Song
+</a>
+
+<div class="card">
+<h2>💞 Anniversary Date 💞</h2>
+<h3>19 March 2026</h3>
+</div>
+
+<div class="card">
+<h2>💌 Love Letter</h2>
 <p>
-Babe, I loveee you sooooo muchhhhhhh 💕
+Forever yours,<br>
+Lil Guy ❤️
 </p>
+</div>
+
+<footer>
+🌹✨ I LOVE YOU MAYALUU ✨🌹
+</footer>
+
+</div>
 
 <script>
-const envelopeScreen =
-document.getElementById("envelope-screen");
 
-const mainContent =
-document.getElementById("main-content");
+const intro=document.getElementById("intro");
+const main=document.getElementById("main");
 
-mainContent.style.display="none";
-
-envelopeScreen.onclick=()=>{
-
-envelopeScreen.style.opacity="0";
+intro.onclick=()=>{
+intro.style.opacity="0";
 
 setTimeout(()=>{
-envelopeScreen.remove();
-mainContent.style.display="block";
-document.getElementById("music").play();
-},800);
-
+intro.remove();
+main.style.display="block";
+createHeart();
+},1000);
 };
-function playSong(){
-document.getElementById("music").play();
-}
 
-const flowers=[
+const flowerImages=[
 "pngwing.com.png",
 "pngwing.com-1.png",
 "pngwing.com-2.png"
@@ -188,28 +246,122 @@ const flowers=[
 
 function createFlower(){
 
-let flower=document.createElement("img");
+let img=document.createElement("img");
 
-flower.src=flowers[Math.floor(Math.random()*flowers.length)];
+img.src=flowerImages[
+Math.floor(Math.random()*flowerImages.length)
+];
 
-flower.className="flower";
+img.className="flower";
 
-flower.style.left=Math.random()*100+"vw";
+img.style.left=Math.random()*100+"vw";
 
-flower.style.width=(40+Math.random()*60)+"px";
+img.style.width=(40+Math.random()*40)+"px";
 
-document.body.appendChild(flower);
+img.style.animationDuration=
+(8+Math.random()*5)+"s";
+
+document.body.appendChild(img);
 
 setTimeout(()=>{
-flower.remove();
-},10000);
+img.remove();
+},13000);
+
 }
 
-setInterval(createFlower,800);
+setInterval(createFlower,250);
 
+function createSparkle(){
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},3000);
+
+}
+
+setInterval(createSparkle,350);
+
+function createHeartFloat(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},10000);
+
+}
+
+setInterval(createHeartFloat,700);
+
+function createHeart(){
+
+const container=
+document.getElementById("heartContainer");
+
+for(let i=0;i<180;i++){
+
+let flower=document.createElement("img");
+
+flower.src=
+flowerImages[
+Math.floor(Math.random()*flowerImages.length)
+];
+
+flower.className="flowerHeart";
+
+flower.style.left=
+Math.random()*window.innerWidth+"px";
+
+flower.style.top=
+Math.random()*400+"px";
+
+container.appendChild(flower);
+
+let t=(Math.PI*2*i)/180;
+
+let x=
+16*Math.pow(Math.sin(t),3);
+
+let y=
+-(13*Math.cos(t)
+-5*Math.cos(2*t)
+-2*Math.cos(3*t)
+-Math.cos(4*t));
+
+setTimeout(()=>{
+
+flower.style.left=
+(window.innerWidth/2
++x*12)+"px";
+
+flower.style.top=
+(220+y*12)+"px";
+
+},100);
+
+}
+
+}
 </script>
-<audio id="music" loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+
 </body>
 </html>
