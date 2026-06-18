@@ -10,189 +10,178 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
-overflow-x:hidden;
-text-align:center;
+overflow:hidden;
+background:#f8d6e2;
 color:white;
 }
 
-#intro{
+.scene{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(180deg,#ffd9e8,#ffc4d6);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:99999;
-cursor:pointer;
-transition:1s;
+transition:1.5s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+}
+
+#scene1{
+background:linear-gradient(135deg,#ffd7e7,#f8bfd4);
+z-index:10;
 }
 
 .envelope{
-font-size:120px;
-animation:bounce 1.5s infinite;
+font-size:90px;
+cursor:pointer;
+animation:bounce 1.8s infinite;
+}
+
+.tap{
+margin-top:15px;
+font-size:22px;
 }
 
 @keyframes bounce{
 50%{transform:translateY(-15px);}
 }
 
-.main{
-display:none;
-padding:25px;
+#scene2{
+background:linear-gradient(135deg,#ffd7e7,#f6c4d8);
+opacity:0;
 }
 
 .photo{
-width:90%;
-max-width:380px;
+width:320px;
+max-width:85vw;
+border:8px solid white;
 border-radius:25px;
-border:6px solid white;
-box-shadow:0 0 30px rgba(255,255,255,.7);
-animation:photoIn 2s ease;
+box-shadow:0 0 35px rgba(255,255,255,.5);
+animation:zoom 8s infinite alternate;
 }
 
-@keyframes photoIn{
-from{
-opacity:0;
-transform:scale(.7);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
 h1{
-font-size:55px;
 margin-top:20px;
-text-shadow:0 0 20px white;
+font-size:3rem;
+text-align:center;
 }
 
 .message{
-font-size:22px;
-line-height:1.8;
-max-width:800px;
-margin:auto;
-padding:25px;
+font-size:1.2rem;
+max-width:700px;
+text-align:center;
+padding:20px;
 }
 
 .card{
 background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
-border-radius:25px;
+backdrop-filter:blur(8px);
 padding:25px;
-margin:25px auto;
-max-width:500px;
+border-radius:20px;
+margin-top:20px;
 }
 
-.btn{
-display:inline-block;
-padding:14px 28px;
+button{
+padding:15px 25px;
+border:none;
+border-radius:40px;
+font-size:18px;
+cursor:pointer;
 background:white;
-color:#ff4d88;
-text-decoration:none;
-border-radius:999px;
+color:#ff4b7d;
 font-weight:bold;
 margin-top:20px;
 }
 
 .flower{
 position:fixed;
-top:-100px;
 pointer-events:none;
-z-index:2;
-animation:flowerFall linear forwards;
+animation:float linear forwards;
+z-index:999;
 }
 
-@keyframes flowerFall{
+@keyframes float{
 0%{
-transform:translateY(-100px) rotate(0deg);
+transform:translateY(110vh) rotate(0deg);
 opacity:0;
 }
 10%{
 opacity:1;
 }
 100%{
-transform:translateY(120vh) rotate(720deg);
-opacity:.9;
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
 }
 }
 
 .sparkle{
 position:fixed;
-pointer-events:none;
-font-size:20px;
-animation:sparkle 3s linear forwards;
+font-size:22px;
+animation:twinkle 3s infinite;
 }
 
-@keyframes sparkle{
-0%{opacity:0;}
-50%{opacity:1;}
-100%{opacity:0;}
+@keyframes twinkle{
+50%{
+transform:scale(1.5);
+opacity:.5;
+}
 }
 
-.heart{
-position:fixed;
-font-size:28px;
-pointer-events:none;
-animation:heartFloat 10s linear forwards;
+.fadeText{
+animation:fadeIn 3s;
 }
 
-@keyframes heartFloat{
+@keyframes fadeIn{
 from{
-transform:translateY(100vh);
+opacity:0;
+transform:translateY(40px);
 }
 to{
-transform:translateY(-120vh);
+opacity:1;
+transform:translateY(0);
 }
-}
-
-footer{
-padding:40px;
-font-size:22px;
-}
-
-#heartContainer{
-position:relative;
-height:450px;
-margin-top:20px;
-}
-
-.flowerHeart{
-position:absolute;
-width:40px;
-transition:4s ease;
 }
 </style>
 </head>
 
 <body>
 
-<div id="intro">
-<div class="envelope">💌</div>
-<h2>For My Mayaluu ❤️</h2>
-<p>Tap Anywhere To Open</p>
+<audio id="music" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div id="scene1" class="scene">
+
+<div class="envelope" onclick="openLove()">💌</div>
+<div class="tap">Tap to Open ❤️</div>
+
 </div>
 
-<div class="main" id="main">
-
-<div id="heartContainer"></div>
+<div id="scene2" class="scene hidden">
 
 <img src="IMG-20260505-WA0012.jpg" class="photo">
 
-<h1>For My Mayaluu ❤️</h1>
+<h1 class="fadeText">For My Mayaluu ❤️</h1>
 
-<div class="message">
-Babe I loveee you soooooo muchhhhhhh 💖<br><br>
-
+<div class="message fadeText">
+Babe, I loveee you soooooo muchhhhhhh ❤️<br><br>
+Every moment with you feels special.
  Happy 3 months, my love ❤️🌹
 
 It's hard to believe that only three months have passed because it feels like you've been a part of my life forever. These past three months have been some of the most beautiful, happiest, and most meaningful days of my life. Before you, my days felt ordinary, but now every day feels brighter just because you're in it. 🥺💖
@@ -211,51 +200,51 @@ Thank you for choosing me every day. Thank you for staying, for caring, for lovi
 
 Happy 3 months, baby. Thank you for giving me a love that feels warm, safe, and genuine. I love you more than words can describe, more than any paragraph could ever explain, and more with every passing day. Here's to our first three months and to all the beautiful months and years waiting for us ahead. 🥂💕✨
 
-I love you endlessly, today, tomorrow, and always. ❤️🥺🫶Every moment with you feels special.
-You make my days brighter and my heart happier 🌸💕
+I love you endlessly, today, tomorrow, and always. ❤️🥺🫶You make my days brighter and my heart happier. 🌹
 </div>
 
-<a class="btn"
-href="https://youtu.be/YQ-qToZUybM?si=T3C8dLmwd0GS78aQ"
-target="_blank">
-🎵 Play Our Song
-</a>
-
-<div class="card">
-<h2>💞 Anniversary Date 💞</h2>
-<h3>19 March 2026</h3>
+<div class="card fadeText">
+💕 Anniversary Date 💕
+<br><br>
+19 March 2026
 </div>
 
-<div class="card">
-<h2>💌 Love Letter</h2>
-<p>
-Forever yours,<br>
-Lil Guy ❤️
-</p>
-</div>
-
-<footer>
-🌹✨ I LOVE YOU MAYALUU ✨🌹
-</footer>
+<button onclick="toggleMusic()">🎵 Play Our Song</button>
 
 </div>
 
 <script>
 
-const intro=document.getElementById("intro");
-const main=document.getElementById("main");
+const music=document.getElementById("music");
 
-intro.onclick=()=>{
-intro.style.opacity="0";
+function openLove(){
+
+document.getElementById("scene1").classList.add("hidden");
+
+const scene2=document.getElementById("scene2");
 
 setTimeout(()=>{
-intro.remove();
-main.style.display="block";
-createHeart();
-},1000);
-};
+scene2.classList.remove("hidden");
+scene2.style.opacity="1";
+},800);
 
-const flowerImages=[
+music.play().catch(()=>{});
+
+bloomFlowers();
+
+}
+
+function toggleMusic(){
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+const flowers=[
 "pngwing.com.png",
 "pngwing.com-1.png",
 "pngwing.com-2.png"
@@ -263,32 +252,44 @@ const flowerImages=[
 
 function createFlower(){
 
-let img=document.createElement("img");
+let flower=document.createElement("img");
 
-img.src=flowerImages[
-Math.floor(Math.random()*flowerImages.length)
-];
+flower.src=flowers[Math.floor(Math.random()*flowers.length)];
 
-img.className="flower";
+flower.className="flower";
 
-img.style.left=Math.random()*100+"vw";
+flower.style.left=Math.random()*100+"vw";
 
-img.style.width=(40+Math.random()*40)+"px";
+let size=40+Math.random()*80;
 
-img.style.animationDuration=
-(8+Math.random()*5)+"s";
+flower.style.width=size+"px";
 
-document.body.appendChild(img);
+flower.style.animationDuration=
+(8+Math.random()*8)+"s";
+
+document.body.appendChild(flower);
 
 setTimeout(()=>{
-img.remove();
-},13000);
+flower.remove();
+},16000);
 
 }
 
-setInterval(createFlower,250);
+function bloomFlowers(){
 
-function createSparkle(){
+for(let i=0;i<25;i++){
+
+setTimeout(()=>{
+createFlower();
+},i*120);
+
+}
+
+setInterval(createFlower,900);
+
+}
+
+for(let i=0;i<15;i++){
 
 let s=document.createElement("div");
 
@@ -297,87 +298,15 @@ s.className="sparkle";
 s.innerHTML="✨";
 
 s.style.left=Math.random()*100+"vw";
+
 s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*3+"s";
 
 document.body.appendChild(s);
 
-setTimeout(()=>{
-s.remove();
-},3000);
-
 }
 
-setInterval(createSparkle,350);
-
-function createHeartFloat(){
-
-let h=document.createElement("div");
-
-h.className="heart";
-
-h.innerHTML="💖";
-
-h.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(h);
-
-setTimeout(()=>{
-h.remove();
-},10000);
-
-}
-
-setInterval(createHeartFloat,700);
-
-function createHeart(){
-
-const container=
-document.getElementById("heartContainer");
-
-for(let i=0;i<180;i++){
-
-let flower=document.createElement("img");
-
-flower.src=
-flowerImages[
-Math.floor(Math.random()*flowerImages.length)
-];
-
-flower.className="flowerHeart";
-
-flower.style.left=
-Math.random()*window.innerWidth+"px";
-
-flower.style.top=
-Math.random()*400+"px";
-
-container.appendChild(flower);
-
-let t=(Math.PI*2*i)/180;
-
-let x=
-16*Math.pow(Math.sin(t),3);
-
-let y=
--(13*Math.cos(t)
--5*Math.cos(2*t)
--2*Math.cos(3*t)
--Math.cos(4*t));
-
-setTimeout(()=>{
-
-flower.style.left=
-(window.innerWidth/2
-+x*12)+"px";
-
-flower.style.top=
-(220+y*12)+"px";
-
-},100);
-
-}
-
-}
 </script>
 
 </body>
