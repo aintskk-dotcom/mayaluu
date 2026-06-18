@@ -77,6 +77,30 @@ font-size:18px;
 font-weight:bold;
 cursor:pointer;
 margin-top:20px;
+.heart-animation{
+font-size:120px;
+margin-top:15px;
+margin-bottom:10px;
+animation:heartBeat 1.5s infinite;
+filter:drop-shadow(0 0 20px hotpink);
+}
+
+@keyframes heartBeat{
+0%{
+transform:scale(1);
+}
+25%{
+transform:scale(1.2);
+}
+50%{
+transform:scale(1);
+}
+75%{
+transform:scale(1.25);
+}
+100%{
+transform:scale(1);
+}
 }
 </style>
 
@@ -94,6 +118,9 @@ margin-top:20px;
 <button onclick="playSong()" class="music-btn">
 🎵 Play Our Song
 </button>
+<div class="heart-animation">
+💖✨💖
+</div>
 <p>
 Babe, I loveee you sooooo muchhhhhhh 💕
 </p>
